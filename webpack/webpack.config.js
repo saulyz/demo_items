@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     context: __dirname,
@@ -32,5 +33,11 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: "My Shop",
+            template: "../app/templates/index.html"
+        })
+    ],
     stats: { colors: true }
 };
