@@ -1,0 +1,23 @@
+{
+  "name": "demo_items_task",
+  "description": "Assets for visual representation on an App",
+  "main": "index.js",
+  "authors": [
+    "Saulius Vikerta <saulius.vikerta@gmail.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "ReactJS"
+  ],
+  "homepage": "https://github.com/saulyz/demo_items",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
