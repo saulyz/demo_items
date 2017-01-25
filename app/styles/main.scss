@@ -4,9 +4,22 @@ body {
 	background-color: #eee;
 }
 
-.element {
-	background-color: #999;
-	strong { 
-		font-size: 20px;
-	}
+/* Helper classes */
+.p-10 {
+    padding: 10px;
+}
+.p-v-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.card {
+    margin-bottom: 20px;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+    .product-title {
+        display: none;
+    }
 }
