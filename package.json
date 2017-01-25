@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server/index.js",
     "build": "webpack --optimize-minimize",
-    "start": "webpack-dev-server --progress --inline --hot --colors"
+    "start": "webpack-dev-server --progress --inline --hot --colors --history-api-fallback"
   },
   "license": "ISC",
   "dependencies": {

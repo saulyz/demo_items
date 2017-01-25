@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import List from '../components/list';
+import ProductList from '../components/product-list';
 
 
 class PageHome extends Component {  
     render() {
         return (
             <div className="main-content home">
-                <List />
+                <ProductList />
             </div>
         );
     }

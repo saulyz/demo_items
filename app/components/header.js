@@ -1,6 +1,6 @@
 /*Import dependencies*/
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { Link } from 'react-router';
 
 import { Nav } from 'react-bootstrap'; 
 import { NavItem } from 'react-bootstrap'; 
@@ -15,11 +15,11 @@ class Header extends Component {
 	    <Navbar>
 	      <Navbar.Header>
 	        <Navbar.Brand>
-	          <a href="#">Demo items Shop</a>
+	          <Link to="/">Demo items Shop</Link>
 	        </Navbar.Brand>
 	      </Navbar.Header>
 	      <Nav>
-	        <NavItem eventKey={1} href="#">Link</NavItem>
+	        <NavItem eventKey={1} href="#">Favorites</NavItem>
 	      </Nav>
 	    </Navbar>
 	  );

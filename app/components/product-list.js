@@ -8,12 +8,12 @@ import { Grid } from 'react-bootstrap';
 import { Row } from 'react-bootstrap'; 
 import { Col } from 'react-bootstrap'; 
 
-class List extends Component {
+class ProductList extends Component {
 
     render() {
         return (
-            <Grid>
-                <Row className="show-grid">
+            <Grid className="view-all-products">
+                <Row>
                     <Col xs={12} md={6} lg={4}>
                         <ProductCard />
                     </Col>
@@ -38,4 +38,4 @@ class List extends Component {
     }
 }
 
-export default List;
+export default ProductList;
