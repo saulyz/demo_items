@@ -9,8 +9,8 @@ module.exports = {
         browse: 'entries/main.js'
     },
     output: {
-        path: path.join(__dirname, '/bundle'),
-        publicPath: '/bundle/',
+        path: path.join(__dirname, '/'),
+        publicPath: '/',
         filename: '[name].js'
     },
     resolve: {
