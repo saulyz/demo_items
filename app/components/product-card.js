@@ -11,8 +11,8 @@ class ProductCard extends Component {
         return (
             <div className="box box-white box-product m-b-20">
                 <Link to="single">
-                    <Image src="/app/assets/dummy_image.gif" responsive alt="Product name"/>
-                    <div className="price-product p-10">$ XXX</div>
+                    <Image src={this.props.image} responsive className="image-product" title={this.props.title}/>
+                    <div className="price-product p-10">{this.props.price}</div>
                 </Link>
             </div>
         )

@@ -27,8 +27,12 @@ class ProductList extends Component {
                 return text ? JSON.parse(text) : {}
             })
             .then (items_json => {
-                this.setState({items:items_json});
-                console.log ('json format: ',items_json);
+                let itemObj = items_json.items;
+                itemObj.map((i) => {
+                    return i.prices;
+                })
+                this.setState({ items: itemObj });
+                console.log ('json format: ', itemObj);
             })
     }
 
@@ -39,7 +43,7 @@ class ProductList extends Component {
                     { this.state.items.map (item => { 
                         return (
                             <Col xs={12} md={6} lg={4}>
-                                <ProductCard title={item.title} price={item.integerId}/>
+                                <ProductCard title={item.title} price={item.vertical} image={item.image}/>
                             </Col>
                         )
                     }) }
