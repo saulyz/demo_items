@@ -1,12 +1,15 @@
 /*Import dependencies*/
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import update from 'immutability-helper';
 
 import ProductCard from '../components/product-card';
 
 import { Grid } from 'react-bootstrap'; 
 import { Row } from 'react-bootstrap'; 
 import { Col } from 'react-bootstrap'; 
+import { Button } from 'react-bootstrap';
+
 
 class ProductList extends Component {
 
@@ -14,12 +17,31 @@ class ProductList extends Component {
         super();
         this.state = { 
             items: [], 
-            items_prices: [] 
+            items_prices: [],
+            last_item: 0
         };
     }
 
+    //this.fetchItems = this.fetchItems.bind(this);
+
     componentDidMount() {
-        fetch('http://localhost:3001/items/data')
+        if (this.state.last_item == 0) {
+            this.fetchItems(0);
+        }
+    }
+
+    fetchItems(start, limit) {
+        let query = 'http://localhost:3001/items/data/';
+
+        //Skipping variation on limit setting, since the task has no description on limit variation
+        //limit=9 will be a nice default block
+
+        if (start != undefined) {
+            query = `${query}?start=${start}`;
+            console.log ('querying: ', query);
+        } 
+
+        fetch(query)
             .then (result => {
                 let result_body = result.text();
                 console.log ('text format: ', result_body);
@@ -42,10 +64,22 @@ class ProductList extends Component {
                     }
                     return price;
                 })
-                this.setState({ items: itemObj });
-                this.setState({ items_prices: all_prices });
                 console.log ('json format: ', itemObj);
+
+                // Updating state with new data
+                let new_items = update (this.state.items, {
+                    $push: itemObj
+                });
+                let new_items_prices = update (this.state.items_prices, {
+                    $push: all_prices
+                });
+                let new_last_item = this.state.last_item + itemObj.length;
+
+                this.setState({ items: new_items });
+                this.setState({ items_prices: new_items_prices });
+                this.setState({ last_item: new_last_item })
             })
+        // end of fetch
     }
 
     render() {
@@ -59,6 +93,11 @@ class ProductList extends Component {
                             </Col>
                         )
                     }) }
+                </Row>
+                <Row>
+                    <Col className="center-text p-v-20">
+                        <Button type="submit" onClick={() => this.fetchItems(this.state.last_item)} bsSize="large" className="p-h-20">Load More</Button>
+                    </Col>
                 </Row>
             </Grid>
         )
