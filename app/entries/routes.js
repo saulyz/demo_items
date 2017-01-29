@@ -1,6 +1,6 @@
 /*Import dependencies*/
 import React from 'react';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
 
 /*Components*/
 import Application from '../components/application';
@@ -11,7 +11,8 @@ const routes = (
     <Router history={browserHistory}>
         <Route component={Application}>
             <Route path="/" component={PageHome} />
-            <Route path="single" component={PageSingle} />
+            <Route path="single/(:id)" component={PageSingle} />
+            // missing not found route
         </Route>
     </Router>
 );

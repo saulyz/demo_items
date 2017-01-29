@@ -18,13 +18,9 @@ class Header extends Component {
 	          <Link to="/">Demo items Shop</Link>
 	        </Navbar.Brand>
 	      </Navbar.Header>
-	      <Nav>
-	        <NavItem eventKey={1} href="#">Favorites</NavItem>
-	      </Nav>
 	    </Navbar>
 	  );
   }
- 
 }
  
 export default Header;

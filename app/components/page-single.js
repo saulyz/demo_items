@@ -10,12 +10,16 @@ import { Image } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
 class PageSingle extends Component {  
+
+    //this.props.params.id - passed item id from Link (Router)
+    //id is optional Route path param
+
     render() {
         return (
             <div className="main-content single">
                 <Grid className="view-single-product">
                     <p className="m-b-20">&larr; <Link to="/">back</Link></p>
-                    <ProductPreview />
+                    <ProductPreview id={this.props.params.id}/>
                 </Grid>
             </div>
         );

@@ -12,7 +12,10 @@ class ProductList extends Component {
 
     constructor() {
         super();
-        this.state = { items: [] };
+        this.state = { 
+            items: [], 
+            items_prices: [] 
+        };
     }
 
     componentDidMount() {
@@ -28,10 +31,19 @@ class ProductList extends Component {
             })
             .then (items_json => {
                 let itemObj = items_json.items;
-                itemObj.map((i) => {
-                    return i.prices;
+                const all_prices = itemObj.map((i) => {
+                    let price = [];
+                    if (i.price != null) {
+                        console.dir (i.price.amounts);
+                        price.push (i.price.amounts.EUR);
+                    } else {
+                        console.log (i.price);
+                        price.push('Price Upon Request');
+                    }
+                    return price;
                 })
                 this.setState({ items: itemObj });
+                this.setState({ items_prices: all_prices });
                 console.log ('json format: ', itemObj);
             })
     }
@@ -40,10 +52,10 @@ class ProductList extends Component {
         return (
             <Grid className="view-all-products">
                 <Row>
-                    { this.state.items.map (item => { 
+                    { this.state.items.map ((item, index) => { 
                         return (
-                            <Col xs={12} md={6} lg={4}>
-                                <ProductCard title={item.title} price={item.vertical} image={item.image}/>
+                            <Col key={index} xs={12} sm={6} lg={4}>
+                                <ProductCard id={item.id} title={item.title} price={this.state.items_prices[index]} image={item.image}/>
                             </Col>
                         )
                     }) }
