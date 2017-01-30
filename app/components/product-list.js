@@ -13,8 +13,8 @@ import { Button } from 'react-bootstrap';
 
 class ProductList extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = { 
             items: [], 
             items_prices: [],
@@ -25,21 +25,32 @@ class ProductList extends Component {
     //this.fetchItems = this.fetchItems.bind(this);
 
     componentDidMount() {
-        if (this.state.last_item == 0) {
+
+        // after we return from single view, last is passed via props
+        let last;
+        if (this.props.last !== undefined) {
+            last = this.props.last;
+        }
+        if ((last == 0) || (last === undefined)) {
             this.fetchItems(0);
+        } else {
+            this.fetchItems(0, last);
         }
     }
 
     fetchItems(start, limit) {
-        let query = 'http://localhost:3001/items/data/';
 
         //Skipping variation on limit setting, since the task has no description on limit variation
         //limit=9 will be a nice default block
 
-        if (start != undefined) {
-            query = `${query}?start=${start}`;
-            console.log ('querying: ', query);
-        } 
+        if (start == undefined) {
+            start = 0
+        }
+        let query = `http://localhost:3001/items/data/?start=${start}`;
+        if (limit !== undefined) {
+            query = `${query}&limit=${limit}`;
+        }
+        console.log ('querying: ', query);
 
         fetch(query)
             .then (result => {
@@ -73,7 +84,7 @@ class ProductList extends Component {
                 let new_items_prices = update (this.state.items_prices, {
                     $push: all_prices
                 });
-                let new_last_item = this.state.last_item + itemObj.length;
+                let new_last_item = Number(this.state.last_item) + Number(itemObj.length);
 
                 this.setState({ items: new_items });
                 this.setState({ items_prices: new_items_prices });
@@ -89,7 +100,7 @@ class ProductList extends Component {
                     { this.state.items.map ((item, index) => { 
                         return (
                             <Col key={index} xs={12} sm={6} lg={4}>
-                                <ProductCard id={item.id} title={item.title} price={this.state.items_prices[index]} image={item.image}/>
+                                <ProductCard id={item.id} title={item.title} price={this.state.items_prices[index]} image={item.image} last={this.state.last_item}/>
                             </Col>
                         )
                     }) }

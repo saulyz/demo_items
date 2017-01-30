@@ -72,7 +72,7 @@ class ProductPreview extends Component {
                         </Col>
                         <Col xs={12}>
                             <div className="box box-white p-10">
-                                <p>{this.state.item.description}</p>
+                                <p dangerouslySetInnerHTML={{__html: this.state.item.description}}></p>
                                 <p><strong>Creator:</strong> {(this.state.item.creators != '') ? this.state.item.creators : 'n.d.'}</p>
                             </div>
                         </Col>

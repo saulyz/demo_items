@@ -12,7 +12,7 @@ class ProductCard extends Component {
     render() {
         return (
             <div className="box box-white box-product m-b-20">
-                <Link to={"single/" + this.props.id} >
+                <Link to={"single/" + this.props.id + "/" + this.props.last} >
                     <Image src={this.props.image} responsive className="image-product" title={this.props.title}/>
                     <div className="price-product p-10">{this.props.price}</div>
                 </Link>

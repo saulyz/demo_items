@@ -10,8 +10,8 @@ import PageSingle from '../components/page-single';
 const routes = (
     <Router history={browserHistory}>
         <Route component={Application}>
-            <Route path="/" component={PageHome} />
-            <Route path="single/(:id)" component={PageSingle} />
+            <Route path="/(:last)" component={PageHome} />
+            <Route path="single/(:id)/(:last)" component={PageSingle} />
             // missing not found route
         </Route>
     </Router>

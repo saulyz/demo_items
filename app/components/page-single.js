@@ -18,7 +18,7 @@ class PageSingle extends Component {
         return (
             <div className="main-content single">
                 <Grid className="view-single-product">
-                    <p className="m-b-20">&larr; <Link to="/">back</Link></p>
+                    <p className="m-b-20">&larr; <Link to={"/" + this.props.params.last}>back to list ({this.props.params.last} items)</Link></p>
                     <ProductPreview id={this.props.params.id}/>
                 </Grid>
             </div>

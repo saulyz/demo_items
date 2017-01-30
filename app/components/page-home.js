@@ -7,7 +7,7 @@ class PageHome extends Component {
     render() {
         return (
             <div className="main-content home">
-                <ProductList />
+                <ProductList last={this.props.params.last}/>
             </div>
         );
     }
