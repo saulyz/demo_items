@@ -42,3 +42,18 @@ Webpack will compile all your CSS and JS assets.
 - You can use Redux or any other Flux framework
 - You can use ES6 as [Babel](https://babeljs.io/) is integrated too
 - You can change Webpack/Node configs as you like
+
+
+Run the app
+-----------
+Steps to install dependencies
+- `npm install`
+- `bower install`
+
+Steps to run local server 
+- `npm run dev`
+
+Steps to run webpack-dev-server
+- `npm start`
+
+Check [http://localhost](http://localhost){:target="_blank"}
